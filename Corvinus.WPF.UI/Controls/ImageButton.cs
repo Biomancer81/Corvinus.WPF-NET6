@@ -15,26 +15,6 @@ namespace Corvinus.WPF.UI.Controls
         public static readonly DependencyProperty ImageContentProperty = DependencyProperty.Register("ImageContent", typeof(object), typeof(ImageButton), new UIPropertyMetadata(null));
 
         /// <summary>
-        /// DependencyProperty used to store the SolidColorBrush for the background onMouseOver.
-        /// </summary>
-        public static readonly DependencyProperty MouseOverForegroundProperty = DependencyProperty.Register("MouseOverForeground", typeof(SolidColorBrush), typeof(ImageButton), new UIPropertyMetadata(null));
-
-        /// <summary>
-        /// DependencyProperty used to store the SolidColorBrush for the background onMouseOver.
-        /// </summary>
-        public static readonly DependencyProperty MouseOverBackgroundProperty = DependencyProperty.Register("MouseOverBackground", typeof(SolidColorBrush), typeof(ImageButton), new UIPropertyMetadata(null));
-
-        /// <summary>
-        /// DependencyProperty used to store the SolidColorBrush for the background onMouseDown.
-        /// </summary>
-        public static readonly DependencyProperty MouseDownForegroundProperty = DependencyProperty.Register("MouseDownForeground", typeof(SolidColorBrush), typeof(ImageButton), new UIPropertyMetadata(null));
-
-        /// <summary>
-        /// DependencyProperty used to store the SolidColorBrush for the background onMouseDown.
-        /// </summary>
-        public static readonly DependencyProperty MouseDownBackgroundProperty = DependencyProperty.Register("MouseDownBackground", typeof(SolidColorBrush), typeof(ImageButton), new UIPropertyMetadata(null));
-
-        /// <summary>
         /// DependencyProperty used to store the integer for the FontSize.
         /// </summary>
         public static readonly DependencyProperty FontSizePropertyProperty = DependencyProperty.Register("FontSize", typeof(int), typeof(ImageButton), new UIPropertyMetadata(null));
@@ -59,42 +39,6 @@ namespace Corvinus.WPF.UI.Controls
         {
             get { return (object)this.GetValue(ImageContentProperty); }
             set { this.SetValue(ImageContentProperty, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets Background Color on MouseOverEvent.
-        /// </summary>
-        public SolidColorBrush MouseOverForeground
-        {
-            get { return (SolidColorBrush)this.GetValue(MouseOverForegroundProperty); }
-            set { this.SetValue(MouseOverForegroundProperty, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets Background Color on MouseOverEvent.
-        /// </summary>
-        public SolidColorBrush MouseOverBackground
-        {
-            get { return (SolidColorBrush)this.GetValue(MouseOverBackgroundProperty); }
-            set { this.SetValue(MouseOverBackgroundProperty, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets Background Color on MouseDownEvent.
-        /// </summary>
-        public SolidColorBrush MouseDownForeground
-        {
-            get { return (SolidColorBrush)this.GetValue(MouseDownForegroundProperty); }
-            set { this.SetValue(MouseDownForegroundProperty, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets Background Color on MouseDownEvent.
-        /// </summary>
-        public SolidColorBrush MouseDownBackground
-        {
-            get { return (SolidColorBrush)this.GetValue(MouseDownForegroundProperty); }
-            set { this.SetValue(MouseDownForegroundProperty, value); }
         }
 
         /// <summary>
