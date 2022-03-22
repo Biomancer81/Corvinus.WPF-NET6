@@ -13,12 +13,12 @@ namespace Corvinus.WPF.Common.ViewModels
     /// </summary>
     public abstract class ViewModelBase : INotifyPropertyChanged, IDataErrorInfo
     {
-        private readonly Dictionary<string, object> values = new Dictionary<string, object>();
+        private readonly Dictionary<string, object?> values = new Dictionary<string, object?>();
 
         /// <summary>
         /// Raised when a property on this object has a new value.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Gets an error message indicating what is wrong with this object.
@@ -105,7 +105,7 @@ namespace Corvinus.WPF.Common.ViewModels
                 throw new ArgumentException("Invalid property name", propertyName);
             }
 
-            this.values[propertyName] = value;
+            this.values[propertyName] = value!;
             this.OnPropertyChanged(propertyName);
         }
 
@@ -136,13 +136,14 @@ namespace Corvinus.WPF.Common.ViewModels
                 throw new ArgumentException("Invalid property name", propertyName);
             }
 
-            if (!this.values.TryGetValue(propertyName, out object value))
+            if (!this.values.TryGetValue(propertyName, out object? value))
             {
                 value = default(T);
-                this.values.Add(propertyName, value);
+                if (value != null)
+                    this.values.Add(propertyName, value);
             }
 
-            return (T)value;
+            return (T)value!;
         }
 
         /// <summary>
@@ -172,7 +173,7 @@ namespace Corvinus.WPF.Common.ViewModels
             if (!result)
             {
                 var validationResult = results.First();
-                error = validationResult.ErrorMessage;
+                error = validationResult.ErrorMessage != null ? validationResult.ErrorMessage : string.Empty;
             }
 
             return error;
@@ -186,7 +187,7 @@ namespace Corvinus.WPF.Common.ViewModels
         {
             this.VerifyPropertyName(propertyName);
 
-            PropertyChangedEventHandler handler = this.PropertyChanged;
+            PropertyChangedEventHandler handler = this.PropertyChanged!;
             if (handler != null)
             {
                 var e = new PropertyChangedEventArgs(propertyName);
@@ -233,7 +234,7 @@ namespace Corvinus.WPF.Common.ViewModels
         /// <exception cref="System.ArgumentException">ArgumentException.</exception>
         private object GetValue(string propertyName)
         {
-            if (!this.values.TryGetValue(propertyName, out object value))
+            if (!this.values.TryGetValue(propertyName, out object? value))
             {
                 var propertyDescriptor = TypeDescriptor.GetProperties(this.GetType()).Find(propertyName, false);
                 if (propertyDescriptor == null)
@@ -245,7 +246,7 @@ namespace Corvinus.WPF.Common.ViewModels
                 this.values.Add(propertyName, value);
             }
 
-            return value;
+            return value!;
         }
     }
 }

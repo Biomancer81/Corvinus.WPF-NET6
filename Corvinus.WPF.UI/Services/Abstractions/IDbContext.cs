@@ -2,7 +2,7 @@
 
 namespace Corvinus.WPF.UI.Services
 {
-    public interface IDataService
+    public interface IDbContext
     {
         public List<string> GetDataSample();
     }

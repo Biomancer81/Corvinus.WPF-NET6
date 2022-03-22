@@ -1,5 +1,8 @@
-﻿using Corvinus.WPF.UI.Services;
+﻿using Corvinus.WPF.Common.Extensions;
+using Corvinus.WPF.UI.Configuration;
+using Corvinus.WPF.UI.Services;
 using Corvinus.WPF.UI.ViewModels;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
@@ -13,12 +16,16 @@ namespace Corvinus.WPF.UI
     {
         public static IHost? Host { get; private set; }
 
+        public IConfiguration? Configuration { get; set; }
+
         public App()
         {
             Host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()
+                .ConfigureApp()
                 .ConfigureServices((context, services) =>
                 {
-                    ConfigureServices(services);
+                    services.Configure<IConfiguration>(context.Configuration);
+                    ConfigureServices(services, context.Configuration);
                 })
                 .Build();
         }
@@ -39,14 +46,23 @@ namespace Corvinus.WPF.UI
             base.OnExit(e);
         }
 
-        private void ConfigureServices(IServiceCollection services)
+        private void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<IDataService>(new DataService());
-            services.AddSingleton<IResourceService>(new ResourceService());
+            Configuration = configuration;
+
+            // Todo Add Logging Stuff Here
+
+            services.AddAppConfig<ApplicationConfiguration>(Configuration);
+
+            // Add Addtional Services Here:
+            services.AddSingleton<IDbContext, DbContext>();
+            services.AddSingleton<IResourceService, ResourceService>();
 
 
-
+            //Add ViewModels Here:
             services.AddSingleton<MainWindowViewModel>();
+
+            //Add Views Here:
             services.AddSingleton<MainWindow>();
         }
     }

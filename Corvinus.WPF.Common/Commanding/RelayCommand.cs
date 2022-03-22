@@ -9,14 +9,14 @@ namespace Corvinus.WPF.Common.Commanding
     /// </summary>
     public class RelayCommand : ICommand
     {
-        private readonly Action<object> execute;
-        private readonly Predicate<object> canExecute;
+        private readonly Action<object?> execute;
+        private readonly Predicate<object?> canExecute;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RelayCommand"/> class.
         /// </summary>
         /// <param name="execute">Action typeof object.</param>
-        public RelayCommand(Action<object> execute)
+        public RelayCommand(Action<object?> execute)
             : this(execute, null)
         {
         }
@@ -26,16 +26,16 @@ namespace Corvinus.WPF.Common.Commanding
         /// </summary>
         /// <param name="execute">Action typeof object.</param>
         /// <param name="canExecute">Predicate typeof object.</param>
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+        public RelayCommand(Action<object?> execute, Predicate<object?>? canExecute)
         {
             this.execute = execute ?? throw new ArgumentNullException("execute");
-            this.canExecute = canExecute;
+            this.canExecute = canExecute ?? new Predicate<object?>((obj) => { return true; });
         }
 
         /// <summary>
         /// EventHandler for CanExecuteChanged
         /// </summary>
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
@@ -47,7 +47,7 @@ namespace Corvinus.WPF.Common.Commanding
         /// <param name="parameter">object.</param>
         /// <returns>True/False.</returns>
         [DebuggerStepThrough]
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
             return this.canExecute == null ? true : this.canExecute(parameter);
         }
@@ -57,7 +57,7 @@ namespace Corvinus.WPF.Common.Commanding
         /// </summary>
         /// <param name="parameter">object.</param>
         [DebuggerStepThrough]
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
             this.execute(parameter);
         }

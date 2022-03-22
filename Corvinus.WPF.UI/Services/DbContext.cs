@@ -2,9 +2,9 @@
 
 namespace Corvinus.WPF.UI.Services
 {
-    public class DataService : IDataService
+    public class DbContext : IDbContext
     {
-        public DataService() { }
+        public DbContext() { }
 
         public List<string> GetDataSample()
         {

@@ -8,10 +8,10 @@ namespace Corvinus.WPF.UI.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public IDataService DataService
+        public IDbContext DataContext
         {
-            get { return GetValue(() => DataService); }
-            set { SetValue(() => DataService, value); }
+            get { return GetValue(() => DataContext); }
+            set { SetValue(() => DataContext, value); }
         }
 
         public IResourceService ResourceService
@@ -56,9 +56,9 @@ namespace Corvinus.WPF.UI.ViewModels
             set { SetValue(() => MinimizeCommand, value); }
         }
 
-        public MainWindowViewModel(IDataService dataService, IResourceService resourceService)
+        public MainWindowViewModel(IDbContext dataService, IResourceService resourceService)
         {
-            DataService = dataService;
+            DataContext = dataService;
             ResourceService = resourceService;
 
             CloseCommand = new RelayCommand(OnClose);

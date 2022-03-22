@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -12,7 +13,12 @@ namespace Corvinus.WPF.UI.Services
         public string CurrentLocaleCode { get; set; } = "en-US";
         public string CurrentTheme { get; set; } = "Default";
 
-        public ResourceService(){ }
+        public ILogger Logger { get; set; }
+
+        public ResourceService(ILogger logger)
+        {
+            Logger = logger;
+        }
 
         public void ChangeLocale(string localeCode)
         {
@@ -107,6 +113,7 @@ namespace Corvinus.WPF.UI.Services
             }
             catch(Exception ex)
             {
+                Logger.LogError("SetCultureInfo Failed: " + ex.Message);
 
             }
         }

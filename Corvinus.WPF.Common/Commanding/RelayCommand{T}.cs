@@ -10,8 +10,8 @@ namespace Corvinus.WPF.Common.Commanding
     /// <typeparam name="T">type.</typeparam>
     public class RelayCommand<T> : ICommand
     {
-        private readonly Action<T> execute = null;
-        private readonly Func<T, bool> canExecute = null;
+        private readonly Action<T>? execute = null;
+        private readonly Func<T, bool>? canExecute = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RelayCommand{T}"/> class.
@@ -27,7 +27,7 @@ namespace Corvinus.WPF.Common.Commanding
         /// </summary>
         /// <param name="execute">The execution logic.</param>
         /// <param name="canExecute">The execution status logic.</param>
-        public RelayCommand(Action<T> execute, Func<T, bool> canExecute)
+        public RelayCommand(Action<T> execute, Func<T, bool>? canExecute)
         {
             this.execute = execute ?? throw new ArgumentNullException("execute");
             this.canExecute = canExecute;
@@ -36,7 +36,7 @@ namespace Corvinus.WPF.Common.Commanding
         /// <summary>
         /// EventHandler for CanExecuteChanged
         /// </summary>
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
@@ -48,7 +48,7 @@ namespace Corvinus.WPF.Common.Commanding
         /// <param name="parameter">object.</param>
         /// <returns>True/False.</returns>
         [DebuggerStepThrough]
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
             if(parameter != null)
             {
@@ -64,7 +64,7 @@ namespace Corvinus.WPF.Common.Commanding
         /// Executes parameter.
         /// </summary>
         /// <param name="parameter">object.</param>
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
             if(execute != null)
             {
@@ -74,7 +74,7 @@ namespace Corvinus.WPF.Common.Commanding
                 }
                 else
                 {
-                    this.Execute(default(T));
+                    this.Execute(default(T)!);
                 }
             }
         }
