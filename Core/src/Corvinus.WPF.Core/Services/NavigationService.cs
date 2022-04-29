@@ -4,7 +4,6 @@
 
 namespace Corvinus.WPF.Core.Services
 {
-
     using System;
     using System.Collections.Generic;
     using Microsoft.Extensions.Hosting;
@@ -13,7 +12,7 @@ namespace Corvinus.WPF.Core.Services
     /// A generic class used for navigation.
     /// </summary>
     /// <typeparam name="T">The class object to use for navigation.</typeparam>
-    public class NavigationService<T>
+    public class NavigationService<T> : INavigationService<T>
         where T : class
     {
         /// <summary>
@@ -44,19 +43,24 @@ namespace Corvinus.WPF.Core.Services
         }
 
         /// <summary>
-        /// Gets BackJournal.
+        /// Gets or sets Host.
         /// </summary>
-        public Stack<T> BackJournal { get; private set; }
+        public static IHost? Host { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether EnableNavigationHistory.
+        /// Gets or sets BackJournal.
         /// </summary>
-        public bool EnableNavigationHistory { get; private set; }
+        public Stack<T> BackJournal { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether EnableNavigationHistory.
+        /// </summary>
+        public bool EnableNavigationHistory { get; set; }
         
         /// <summary>
-        /// Gets ForwardJournal.
+        /// Gets or sets ForwardJournal.
         /// </summary>
-        public Stack<T> ForwardJournal { get; private set; }
+        public Stack<T> ForwardJournal { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether CanNavigateBack.
@@ -80,11 +84,9 @@ namespace Corvinus.WPF.Core.Services
         public T? CurrentView { get; set; }
 
         /// <summary>
-        /// Gets Host.
+        /// Gets or sets Views.
         /// </summary>
-        internal static IHost? Host { get; private set; }
-
-        private Dictionary<string, Type> Views { get; set; }
+        public Dictionary<string, Type> Views { get; set; }
 
         /// <summary>
         /// Initializes the services with an instance of <see cref="IHost"/>.
@@ -111,7 +113,7 @@ namespace Corvinus.WPF.Core.Services
         /// <param name="types">A <see cref="Dictionary{TKey, TValue}"/> where TKey is a <see cref="string"/> and TValue is a <see cref="Type"/>.</param>
         public void AddViews(Dictionary<string, Type> types)
         {
-            foreach(var type in types)
+            foreach (var type in types)
             {
                 AddView(type.Key, type.Value);
             }
@@ -125,7 +127,7 @@ namespace Corvinus.WPF.Core.Services
         {
             Type type = Views[typeName];
 
-            if(CurrentView != null && EnableNavigationHistory)
+            if (CurrentView != null && EnableNavigationHistory)
             {
                 BackJournal.Push(CurrentView);
                 ForwardJournal.Clear();
@@ -143,7 +145,7 @@ namespace Corvinus.WPF.Core.Services
         {
             if (CanNavigateBack)
             {
-                if(CurrentView != null && CanNavigateForward)
+                if (CurrentView != null && CanNavigateForward)
                 {
                     ForwardJournal.Push(CurrentView);
                 }
@@ -161,7 +163,7 @@ namespace Corvinus.WPF.Core.Services
         {
             if (CanNavigateForward)
             {
-                if(CurrentView != null && CanNavigateBack)
+                if (CurrentView != null && CanNavigateBack)
                 {
                     BackJournal.Push(CurrentView);
                 }

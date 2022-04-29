@@ -2,19 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <!-- Color A -->
-    <Color x:Key="CThemeColorA" A="255" R="51" G="142" B="209" />
+    <Color x:Key="CThemeColorA" A="255" R="209" G="142" B="51" />
     <SolidColorBrush x:Key="ThemeColorA" Color="{StaticResource CThemeColorA}" />
 
     <!-- Color B -->
-    <Color x:Key="CThemeColorB" A="255" R="0" G="114" B="198" />
+    <Color x:Key="CThemeColorB" A="255" R="198" G="114" B="0" />
     <SolidColorBrush x:Key="ThemeColorB" Color="{StaticResource CThemeColorB}" />
 
     <!-- Color C -->
-    <Color x:Key="CThemeColorC" A="255" R="0" G="91" B="158" />
+    <Color x:Key="CThemeColorC" A="255" R="158" G="91" B="0" />
     <SolidColorBrush x:Key="ThemeColorC" Color="{StaticResource CThemeColorC}" />
 
     <!-- Color D -->
-    <Color x:Key="CThemeColorD" A="255" R="0" G="68" B="119" />
+    <Color x:Key="CThemeColorD" A="255" R="119" G="68" B="0" />
     <SolidColorBrush x:Key="ThemeColorD" Color="{StaticResource CThemeColorD}" />
 
     <!-- Black -->
@@ -36,11 +36,11 @@
     <!-- Dark Gray -->
     <Color x:Key="CThemeDarkGray" A="255" R="80" G="80" B="80" />
     <SolidColorBrush x:Key="ThemeDarkGray" Color="{StaticResource CThemeDarkGray}" />
-
+    
     <!-- Off Black -->
     <Color x:Key="CThemeOffBlack" A="255" R="24" G="24" B="24" />
     <SolidColorBrush x:Key="ThemeOffBlack" Color="{StaticResource CThemeOffBlack}" />
-
+    
     <!-- Dimmer -->
     <Color x:Key="CThemeDimmer" A="128" R="128" G="128" B="128" />
     <SolidColorBrush x:Key="ThemeDimmer" Color="{StaticResource CThemeDimmer}" />

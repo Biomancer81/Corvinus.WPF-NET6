@@ -5,6 +5,7 @@
 namespace Corvinus.WPF.UI
 {
     using Corvinus.WPF.Core.Extensions;
+    using Corvinus.WPF.Presentation.Extensions;
     using Corvinus.WPF.Presentation.Services;
     using Corvinus.WPF.UI.Configuration;
     using Corvinus.WPF.UI.Services;

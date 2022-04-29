@@ -52,49 +52,5 @@ namespace Corvinus.WPF.Core.Extensions
 
             return services;
         }
-
-        /// <summary>
-        /// Adds Views.
-        /// </summary>
-        /// <param name="services">The current instance of <see cref="IServiceCollection"/>.</param>
-        /// <returns>The configured instance of <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddViews(this IServiceCollection services)
-        {
-            List<Type> types = Assembly.GetCallingAssembly().GetTypes().Where(t => t.Name.EndsWith("View") || t.Name.EndsWith("Window")).ToList();
-
-            foreach (Type type in types)
-            {
-                services.AddSingleton(type);
-            }
-
-            return services;
-        }
-
-        /// <summary>
-        /// Adds Views of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The views type.</typeparam>
-        /// <param name="services">The current instance of <see cref="IServiceCollection"/>.</param>
-        /// <returns>The configured instance of <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddViews<T>(this IServiceCollection services)
-            where T : class
-        {
-            List<Type> types = Assembly.GetCallingAssembly().GetTypes().Where(t => t.Name.EndsWith("View") || t.Name.EndsWith("Window")).ToList();
-            NavigationService<T> navigationService = new NavigationService<T>();
-
-            foreach (Type type in types)
-            {
-                if (type.Name.EndsWith("View"))
-                {
-                    navigationService.AddView(type.Name, type);
-                }
-
-                services.AddSingleton(type);
-            }
-
-            services.AddSingleton<NavigationService<T>>(navigationService);
-
-            return services;
-        }
     }
 }

@@ -9,6 +9,7 @@ namespace Corvinus.WPF.UI.ViewModels
     using Corvinus.WPF.Core.ViewModels.Abstractions;
     using Corvinus.WPF.Presentation.Services;
     using Corvinus.WPF.UI.Services;
+    using System.Windows.Controls;
     using System.Windows.Input;
 
     /// <summary>
@@ -16,15 +17,20 @@ namespace Corvinus.WPF.UI.ViewModels
     /// </summary>
     public class MainWindowViewModel : WindowViewModelBase
     {
+        private PageNavigationService _pageNavigationService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         /// </summary>
         /// <param name="dataService">The host instance of <see cref="IDbContext"/>.</param>
         /// <param name="resourceService">The host instance of <see cref="IResourceService"/>.</param>
+        /// <param name="pageNavigationService">The host instance of <see cref="PageNavigationService"/>.</param>
         /// <param name="applicationConfiguration">The host instance of <see cref="IApplicationConfiguration"/>.</param>
-        public MainWindowViewModel(IDbContext dataService, IResourceService resourceService, IApplicationConfiguration applicationConfiguration) 
+        public MainWindowViewModel(IDbContext dataService, IResourceService resourceService, PageNavigationService pageNavigationService, IApplicationConfiguration applicationConfiguration) 
             : base(applicationConfiguration)
         {
+            _pageNavigationService = pageNavigationService;
+            _pageNavigationService.Navigate("TestView");
             DataContext = dataService;
             ResourceService = resourceService;
 
@@ -68,9 +74,18 @@ namespace Corvinus.WPF.UI.ViewModels
             set { SetValue(() => ChangeThemeCommand, value); }
         }
 
+        /// <summary>
+        /// Gets or sets NavigationTarget.
+        /// </summary>
+        public Page NavigationTarget
+        {
+            get { return GetValue(() => NavigationTarget); }
+            set { SetValue(() => NavigationTarget, value); }
+        }
+
         private void OnChangeLocale(string localeCode)
         {
-            if(localeCode != null && ResourceService.CurrentLocaleCode != localeCode)
+            if (localeCode != null && ResourceService.CurrentLocaleCode != localeCode)
             {
                 ResourceService.ChangeLocale(localeCode);
             }

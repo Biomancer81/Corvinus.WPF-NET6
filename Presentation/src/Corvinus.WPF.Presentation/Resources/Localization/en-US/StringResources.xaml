@@ -3,5 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="WindowTitle">Main Window</system:String>
+    <system:String x:Key="ThemeButton">Change Theme</system:String>
+    <system:String x:Key="LocaleButton">Change Locale</system:String>
     
 </ResourceDictionary>
