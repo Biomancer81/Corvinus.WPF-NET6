@@ -3,9 +3,40 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvinus.WPF.UI", "Corvinus.WPF.UI\Corvinus.WPF.UI.csproj", "{4B487137-2C77-48AA-A838-AC94CFB7D7A5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{44A45205-E390-41C9-A0BB-027BA5AF6CFC}"
+	ProjectSection(SolutionItems) = preProject
+		common\CodeAnalysis.Src.ruleset = common\CodeAnalysis.Src.ruleset
+		common\CodeAnalysis.Test.ruleset = common\CodeAnalysis.Test.ruleset
+		common\CopyLibrary.ps1 = common\CopyLibrary.ps1
+		common\Corvinus-Logo.png = common\Corvinus-Logo.png
+		directory.build.props = directory.build.props
+		directory.build.test.props = directory.build.test.props
+		common\stylecop.json = common\stylecop.json
+		common\xmldoc2md.ps1 = common\xmldoc2md.ps1
+		common\xmldoc2md.xsl = common\xmldoc2md.xsl
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Corvinus.WPF.Common", "Corvinus.WPF.Common\Corvinus.WPF.Common.csproj", "{11C2C16E-D8F4-47A3-8A7C-2241FA1E4E17}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6F15572D-7965-4E1F-912A-608AF99EBCCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvinus.WPF.Core", "Core\src\Corvinus.WPF.Core\Corvinus.WPF.Core.csproj", "{8C05B14D-AA57-4AD0-969E-E4DEF89C5C8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IO", "IO", "{19CD8A2E-6D97-4771-9A15-3C92145CE6CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{1E0F6924-4CF0-47EC-A3FD-339AFB789BC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{70DCD0AD-20F3-4DED-9879-CDA590D7370A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8F5F2A4D-397A-4CD3-9528-1EAEAC130792}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvinus.WPF.IO", "IO\src\Corvinus.WPF.IO\Corvinus.WPF.IO.csproj", "{6201C0A5-BFB5-4058-8C38-52D498DE18D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvinus.WPF.Modules", "Modules\src\Corvinus.WPF.Modules\Corvinus.WPF.Modules.csproj", "{54D79D7F-D76E-44DC-BA20-13492B575DF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvinus.WPF.Modules.UI", "Modules\src\Corvinus.WPF.Modules.UI\Corvinus.WPF.Modules.UI.csproj", "{8934B401-0149-4AB8-B971-AB877879515A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvinus.WPF.Presentation", "Presentation\src\Corvinus.WPF.Presentation\Corvinus.WPF.Presentation.csproj", "{FF8FD9CB-85F1-4DB9-B620-6B487637DA11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Corvinus.WPF.UI", "UI\src\Corvinus.WPF.UI\Corvinus.WPF.UI.csproj", "{A8F7665F-5E8F-496B-BA32-C932A63E9DA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +44,41 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4B487137-2C77-48AA-A838-AC94CFB7D7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B487137-2C77-48AA-A838-AC94CFB7D7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B487137-2C77-48AA-A838-AC94CFB7D7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B487137-2C77-48AA-A838-AC94CFB7D7A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11C2C16E-D8F4-47A3-8A7C-2241FA1E4E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11C2C16E-D8F4-47A3-8A7C-2241FA1E4E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11C2C16E-D8F4-47A3-8A7C-2241FA1E4E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11C2C16E-D8F4-47A3-8A7C-2241FA1E4E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C05B14D-AA57-4AD0-969E-E4DEF89C5C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C05B14D-AA57-4AD0-969E-E4DEF89C5C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C05B14D-AA57-4AD0-969E-E4DEF89C5C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C05B14D-AA57-4AD0-969E-E4DEF89C5C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6201C0A5-BFB5-4058-8C38-52D498DE18D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6201C0A5-BFB5-4058-8C38-52D498DE18D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6201C0A5-BFB5-4058-8C38-52D498DE18D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6201C0A5-BFB5-4058-8C38-52D498DE18D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54D79D7F-D76E-44DC-BA20-13492B575DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D79D7F-D76E-44DC-BA20-13492B575DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D79D7F-D76E-44DC-BA20-13492B575DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D79D7F-D76E-44DC-BA20-13492B575DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8934B401-0149-4AB8-B971-AB877879515A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8934B401-0149-4AB8-B971-AB877879515A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8934B401-0149-4AB8-B971-AB877879515A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8934B401-0149-4AB8-B971-AB877879515A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF8FD9CB-85F1-4DB9-B620-6B487637DA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF8FD9CB-85F1-4DB9-B620-6B487637DA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF8FD9CB-85F1-4DB9-B620-6B487637DA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF8FD9CB-85F1-4DB9-B620-6B487637DA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F7665F-5E8F-496B-BA32-C932A63E9DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F7665F-5E8F-496B-BA32-C932A63E9DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F7665F-5E8F-496B-BA32-C932A63E9DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F7665F-5E8F-496B-BA32-C932A63E9DA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C05B14D-AA57-4AD0-969E-E4DEF89C5C8C} = {6F15572D-7965-4E1F-912A-608AF99EBCCC}
+		{6201C0A5-BFB5-4058-8C38-52D498DE18D6} = {19CD8A2E-6D97-4771-9A15-3C92145CE6CB}
+		{54D79D7F-D76E-44DC-BA20-13492B575DF4} = {1E0F6924-4CF0-47EC-A3FD-339AFB789BC2}
+		{8934B401-0149-4AB8-B971-AB877879515A} = {1E0F6924-4CF0-47EC-A3FD-339AFB789BC2}
+		{FF8FD9CB-85F1-4DB9-B620-6B487637DA11} = {70DCD0AD-20F3-4DED-9879-CDA590D7370A}
+		{A8F7665F-5E8F-496B-BA32-C932A63E9DA9} = {8F5F2A4D-397A-4CD3-9528-1EAEAC130792}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63927F0C-223E-4B48-8816-CD122ADFA06B}

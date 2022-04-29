@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <OutputPath>$(SolutionDir)build\bin\$(AssemblyName)\$(Configuration)\$(Platform)</OutputPath>
+    <DocumentationFile>$(SolutionDir)build\docs\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controls\**" />
+    <EmbeddedResource Remove="Controls\**" />
+    <None Remove="Controls\**" />
+    <Page Remove="Controls\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\Abstractions\IResourceService.cs" />
+    <Compile Remove="Services\ResourceService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Resources\Base.xaml" />
+    <Page Remove="Resources\ControlStyles.xaml" />
+    <Page Remove="Resources\ImageGeometry.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\src\Corvinus.WPF.Core\Corvinus.WPF.Core.csproj" />
+    <ProjectReference Include="..\..\..\IO\src\Corvinus.WPF.IO\Corvinus.WPF.IO.csproj" />
+    <ProjectReference Include="..\..\..\Modules\src\Corvinus.WPF.Modules.UI\Corvinus.WPF.Modules.UI.csproj" />
+    <ProjectReference Include="..\..\..\Modules\src\Corvinus.WPF.Modules\Corvinus.WPF.Modules.csproj" />
+    <ProjectReference Include="..\..\..\Presentation\src\Corvinus.WPF.Presentation\Corvinus.WPF.Presentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appconfig.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appconfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

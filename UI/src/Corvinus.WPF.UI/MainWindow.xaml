@@ -1,0 +1,12 @@
+﻿<Window x:Class="Corvinus.WPF.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Corvinus.WPF.UI"
+        mc:Ignorable="d"
+        Title="{DynamicResource WindowTitle}" Height="1080" Width="1920" Background="{DynamicResource ThemeBlack}" BorderThickness="0" Padding="0" Style="{StaticResource DefaultWindowStyle}" WindowState="{Binding WindowState, Mode=TwoWay}">
+    <Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Corvinus.WPF.Modules</name>
+    </assembly>
+    <members>
+        <member name="T:Corvinus.WPF.Modules.IModule">
+            <summary>
+            The IModule interface.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Modules.IModule.ModuleId">
+            <summary>
+            Gets or sets ModuleId.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Modules.IModule.ModuleName">
+            <summary>
+            Gets or sets ModuleName.
+            </summary>
+        </member>
+    </members>
+</doc>

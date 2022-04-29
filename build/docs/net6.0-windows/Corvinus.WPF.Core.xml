@@ -1,0 +1,442 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Corvinus.WPF.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Corvinus.WPF.Core.Commanding.RelayCommand">
+            <summary>
+            Relay Command.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand.#ctor(System.Action{System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.Commanding.RelayCommand"/> class.
+            </summary>
+            <param name="execute">Action typeof object.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.Commanding.RelayCommand"/> class.
+            </summary>
+            <param name="execute">Action typeof object.</param>
+            <param name="canExecute">Predicate typeof object.</param>
+        </member>
+        <member name="E:Corvinus.WPF.Core.Commanding.RelayCommand.CanExecuteChanged">
+            <summary>
+            EventHandler for CanExecuteChanged
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Returns Boolean of canExecute.
+            </summary>
+            <param name="parameter">object.</param>
+            <returns>True/False.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand.Execute(System.Object)">
+            <summary>
+            Executes parameter.
+            </summary>
+            <param name="parameter">object.</param>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Commanding.RelayCommand`1">
+            <summary>
+            RelayCommand typeof T.
+            </summary>
+            <typeparam name="T">type.</typeparam>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.Commanding.RelayCommand`1"/> class.
+            </summary>
+            <param name="execute">Action typeof T.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.Commanding.RelayCommand`1"/> class.
+            </summary>
+            <param name="execute">The execution logic.</param>
+            <param name="canExecute">The execution status logic.</param>
+        </member>
+        <member name="E:Corvinus.WPF.Core.Commanding.RelayCommand`1.CanExecuteChanged">
+            <summary>
+            EventHandler for CanExecuteChanged
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand`1.CanExecute(System.Object)">
+            <summary>
+            Returns Boolean of canExecute.
+            </summary>
+            <param name="parameter">object.</param>
+            <returns>True/False.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Commanding.RelayCommand`1.Execute(System.Object)">
+            <summary>
+            Executes parameter.
+            </summary>
+            <param name="parameter">object.</param>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Configuration.IApplicationConfiguration">
+            <summary>
+            The ApplicationConfiguration Interface.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Configuration.IApplicationConfiguration.ApplicationId">
+            <summary>
+            Gets or sets ApplicationId.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Configuration.IApplicationConfiguration.ThemingEnabled">
+            <summary>
+            Gets or sets a value indicating whether ThemingEnabled.
+            </summary>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Extensions.ConfigurationExtensions">
+            <summary>
+            Extensions used for App Configuration.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.ConfigurationExtensions.AddAppConfig``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds an instance of ApplicationConfiguration to the application.
+            </summary>
+            <typeparam name="T">The type to contain the ApplicationConfiguration.</typeparam>
+            <param name="services">The current instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configuration">The current instance of <see cref="T:Microsoft.Extensions.Configuration.IConfiguration" />.</param>
+            <returns>The current instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with added configuration.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.ConfigurationExtensions.AddViewModels(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds all view models in the library.
+            </summary>
+            <param name="services">The current instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns>The configured instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.ConfigurationExtensions.AddViews(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Views.
+            </summary>
+            <param name="services">The current instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns>The configured instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.ConfigurationExtensions.AddViews``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Views of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The views type.</typeparam>
+            <param name="services">The current instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns>The configured instance of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Extensions.FrameworkElementExtensions">
+            <summary>
+            FrameworkElement extensions.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.FrameworkElementExtensions.BindTo(System.Windows.FrameworkElement,System.Object)">
+            <summary>
+            Binds UI element to its ViewModel.
+            </summary>
+            <param name="element">FrameworkElement instance.</param>
+            <param name="viewmodel">Viewmodel instance.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.FrameworkElementExtensions.Unbind(System.Windows.FrameworkElement)">
+            <summary>
+            Unbinds UI Element to its ViewModel.
+            </summary>
+            <param name="element">FrameworkElement instance.</param>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Extensions.HostBuilderExtensions">
+            <summary>
+            Extensions for <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.HostBuilderExtensions.ConfigureApp(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            Adds appsettings.json files to the application.
+            </summary>
+            <param name="builder">The current instance of <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</param>
+            <returns>The configured instance of <see cref="T:Microsoft.Extensions.Hosting.IHostBuilder"/>.</returns>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Extensions.ObservableCollectionExtensions">
+            <summary>
+            An ObservableCollection Class Extensions.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Extensions.ObservableCollectionExtensions.RefreshWith``1(System.Collections.ObjectModel.ObservableCollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            RefreshWith allows you to supply an IEnumerable collection of items and replace
+            the existing items in the ObservableCollection.
+            </summary>
+            <typeparam name="T">TypeOf T.</typeparam>
+            <param name="collection">ObservableCollection.</param>
+            <param name="items">IEnumerable.</param>
+        </member>
+        <member name="T:Corvinus.WPF.Core.Services.NavigationService`1">
+            <summary>
+            A generic class used for navigation.
+            </summary>
+            <typeparam name="T">The class object to use for navigation.</typeparam>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.Services.NavigationService`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.#ctor(System.Collections.Generic.Dictionary{System.String,System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.Services.NavigationService`1"/> class.
+            </summary>
+            <param name="viewTypes">A dictionary containing the view names and associated types.</param>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.BackJournal">
+            <summary>
+            Gets BackJournal.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.EnableNavigationHistory">
+            <summary>
+            Gets a value indicating whether EnableNavigationHistory.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.ForwardJournal">
+            <summary>
+            Gets ForwardJournal.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.CanNavigateBack">
+            <summary>
+            Gets a value indicating whether CanNavigateBack.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.CanNavigateForward">
+            <summary>
+            Gets a value indicating whether CanNavigateForward.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.CurrentView">
+            <summary>
+            Gets or sets CurrentObject.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.Services.NavigationService`1.Host">
+            <summary>
+            Gets Host.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.InitializeService(Microsoft.Extensions.Hosting.IHost)">
+            <summary>
+            Initializes the services with an instance of <see cref="T:Microsoft.Extensions.Hosting.IHost"/>.
+            </summary>
+            <param name="host">The instance of <see cref="T:Microsoft.Extensions.Hosting.IHost"/> used to initalize the service.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.AddView(System.String,System.Type)">
+            <summary>
+            Adds a single view to the Views dictionary.
+            </summary>
+            <param name="typeName">The type name to associate with the view.</param>
+            <param name="type">The view <see cref="T:System.Type"/>.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.AddViews(System.Collections.Generic.Dictionary{System.String,System.Type})">
+            <summary>
+            Adds multiple views to the Views dictionary.
+            </summary>
+            <param name="types">A <see cref="T:System.Collections.Generic.Dictionary`2"/> where TKey is a <see cref="T:System.String"/> and TValue is a <see cref="T:System.Type"/>.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.Navigate(System.String)">
+            <summary>
+            Navigates to the view associated with <paramref name="typeName"/>.
+            </summary>
+            <param name="typeName">A string containing the name associated with the view.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.NavigateBack">
+            <summary>
+            Navigates back one view if navigation history is enabled.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.Services.NavigationService`1.NavigateForward">
+            <summary>
+            Navigates forward one view if navigation history is enabled.
+            </summary>
+        </member>
+        <member name="T:Corvinus.WPF.Core.ViewModels.ViewModelBase">
+            <summary>
+            Base Class to handle ViewModels.
+            </summary>
+        </member>
+        <member name="E:Corvinus.WPF.Core.ViewModels.ViewModelBase.PropertyChanged">
+            <summary>
+            Raised when a property on this object has a new value.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.ViewModelBase.System#ComponentModel#IDataErrorInfo#Error">
+            <summary>
+            Gets an error message indicating what is wrong with this object.
+            </summary>
+            <value>The error.</value>
+            <exception cref="T:System.NotSupportedException">NotSupportedException.</exception>
+            <returns>An error message indicating what is wrong with this object. The default is an empty string ("").</returns>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.ViewModelBase.ThrowOnInvalidPropertyName">
+            <summary>
+            Gets a value indicating whether returns whether an exception is thrown, or if a Debug.Fail() is used
+            when an invalid property name is passed to the VerifyPropertyName method.
+            The default value is false, but subclasses used by unit tests might
+            override this property's getter to return true.
+            </summary>
+            <value><c>true</c> if [throw on invalid property name]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.ViewModelBase.System#ComponentModel#IDataErrorInfo#Item(System.String)">
+            <summary>
+            Gets the <see cref="T:System.String" /> with the specified [ERROR: invalid expression IndexerParameter.Name.Words.All].
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>string.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.VerifyPropertyName(System.String)">
+            <summary>
+            Warns the developer if this object does not have
+            a public property with the specified name. This
+            method does not exist in a Release build.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <exception cref="T:System.Exception">Exception.</exception>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.SetValue``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)">
+            <summary>
+            Sets the value of a property.
+            </summary>
+            <typeparam name="T">The type of the property value.</typeparam>
+            <param name="propertySelector">Expression tree contains the property definition.</param>
+            <param name="value">The property value.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.SetValue``1(System.String,``0)">
+            <summary>
+            Sets the value of a property.
+            </summary>
+            <typeparam name="T">The type of the property value.</typeparam>
+            <param name="propertyName">The name of the property.</param>
+            <param name="value">The property value.</param>
+            <exception cref="T:System.ArgumentException">ArgumentException.</exception>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.GetValue``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Gets the value of a property.
+            </summary>
+            <typeparam name="T">The type of the property value.</typeparam>
+            <param name="propertySelector">Expression tree contains the property definition.</param>
+            <returns>The value of the property or default value if not exist.</returns>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.GetValue``1(System.String)">
+            <summary>
+            Gets the value of a property.
+            </summary>
+            <typeparam name="T">The type of the property value.</typeparam>
+            <param name="propertyName">The name of the property.</param>
+            <returns>The value of the property or default value if not exist.</returns>
+            <exception cref="T:System.ArgumentException">ArgumentException.</exception>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.OnValidate(System.String)">
+            <summary>
+            Validates current instance properties using Data Annotations.
+            </summary>
+            <param name="propertyName">This instance property to validate.</param>
+            <returns>Relevant error string on validation failure or <see cref="F:System.String.Empty" /> on validation success.</returns>
+            <exception cref="T:System.ArgumentException">ArgumentException.</exception>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.OnPropertyChanged(System.String)">
+            <summary>
+            Raises this object's PropertyChanged event.
+            </summary>
+            <param name="propertyName">The property that has a new value.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.NotifyPropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Notifies the property changed.
+            </summary>
+            <typeparam name="T">Type.</typeparam>
+            <param name="propertySelector">The property selector.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.GetPropertyName(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Gets the name of the property.
+            </summary>
+            <param name="expression">The expression.</param>
+            <returns>String.</returns>
+            <exception cref="T:System.InvalidOperationException">InvalidOperationException.</exception>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.ViewModelBase.GetValue(System.String)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>object.</returns>
+            <exception cref="T:System.ArgumentException">ArgumentException.</exception>
+        </member>
+        <member name="T:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase">
+            <summary>
+            The view model base for the MainWindowViewModel.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.#ctor(Corvinus.WPF.Core.Configuration.IApplicationConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase"/> class.
+            </summary>
+            <param name="applicationConfiguration">The current instance of <see cref="T:Corvinus.WPF.Core.Configuration.IApplicationConfiguration"/>.</param>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.CloseCommand">
+            <summary>
+            Gets or sets CloseCommand.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.MaximizeCommand">
+            <summary>
+            Gets or sets MaximizeCommand.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.MinimizeCommand">
+            <summary>
+            Gets or sets MinimizeCommand.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.ShowThemeCommand">
+            <summary>
+            Gets or sets ShowThemeCommand.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.WindowState">
+            <summary>
+            Gets or sets WindowState.
+            </summary>
+        </member>
+        <member name="P:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.ThemingEnabled">
+            <summary>
+            Gets or sets a value indicating whether ThemingEnabled.
+            </summary>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.OnClose(System.Object)">
+            <summary>
+            Handles chrome click of close button.
+            </summary>
+            <param name="parameter">An object which should be null.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.OnMaximize(System.Object)">
+            <summary>
+            Handles chrome click of maximize button.
+            </summary>
+            <param name="parameter">An object which should be null.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.OnMinimize(System.Object)">
+            <summary>
+            Handles chrome click of minimize button.
+            </summary>
+            <param name="parameter">An object which should be null.</param>
+        </member>
+        <member name="M:Corvinus.WPF.Core.ViewModels.Abstractions.WindowViewModelBase.OnShowTheme(System.Object)">
+            <summary>
+            Handles chrome click of maximize button.
+            </summary>
+            <param name="parameter">An object which should be null.</param>
+        </member>
+    </members>
+</doc>
