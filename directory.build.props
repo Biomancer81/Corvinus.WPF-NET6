@@ -4,7 +4,7 @@
   <PropertyGroup>
     <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
     <RepoBuildVersion>0.0.1-alpha.1</RepoBuildVersion>
-    <RepositoryUrl>https://github.com/Biomancer81/Corvinus/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Biomancer81/Corvinus.WPF-NET6</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageOutputPath>$(RepoRoot)build\publish\packages\$(RepoBuildVersion)</PackageOutputPath>
     <Company>Corvinus Collective</Company>
@@ -13,7 +13,7 @@
     <LangVersion>latest</LangVersion>
     <NoWarn>NU5105</NoWarn>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Biomancer81/Corvinus</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Biomancer81/Corvinus.WPF-NET6</PackageProjectUrl>
     <PackageIcon>Corvinus-Logo.png</PackageIcon>
   </PropertyGroup>
 
