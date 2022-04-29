@@ -4,6 +4,7 @@
   <PropertyGroup>
     <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
     <RepoBuildVersion>0.0.1-alpha.1</RepoBuildVersion>
+    <Version>$(RepoBuildVersion)</Version>
     <RepositoryUrl>https://github.com/Biomancer81/Corvinus.WPF-NET6</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageOutputPath>$(RepoRoot)build\publish\packages\$(RepoBuildVersion)</PackageOutputPath>

@@ -32,7 +32,7 @@ namespace Corvinus.WPF.UI.Views
         public TestView(TestViewModel viewModel)
         {
             InitializeComponent();
-            this.DataContext = viewModel
+            this.DataContext = viewModel;
         }
     }
 }

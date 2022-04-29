@@ -46,7 +46,7 @@ namespace Corvinus.WPF.Core.ViewModels
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
         /// <returns>string.</returns>
-        string IDataErrorInfo.this[string propertyName]
+        public string this[string propertyName]
         {
             get
             {

@@ -23,19 +23,16 @@ namespace Corvinus.WPF.UI.ViewModels
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         /// </summary>
         /// <param name="dataService">The host instance of <see cref="IDbContext"/>.</param>
-        /// <param name="resourceService">The host instance of <see cref="IResourceService"/>.</param>
         /// <param name="pageNavigationService">The host instance of <see cref="PageNavigationService"/>.</param>
         /// <param name="applicationConfiguration">The host instance of <see cref="IApplicationConfiguration"/>.</param>
-        public MainWindowViewModel(IDbContext dataService, IResourceService resourceService, PageNavigationService pageNavigationService, IApplicationConfiguration applicationConfiguration) 
+        public MainWindowViewModel(IDbContext dataService, PageNavigationService pageNavigationService, IApplicationConfiguration applicationConfiguration) 
             : base(applicationConfiguration)
         {
-            _pageNavigationService = pageNavigationService;
-            _pageNavigationService.Navigate("TestView");
             DataContext = dataService;
-            ResourceService = resourceService;
+            _pageNavigationService = pageNavigationService;
 
-            ChangeLocaleCommand = new RelayCommand<string>(OnChangeLocale);
-            ChangeThemeCommand = new RelayCommand<string>(OnChangeTheme);
+            _pageNavigationService.InitializeService(App.Host!);
+            _pageNavigationService.Navigate("TestView");
         }
 
         /// <summary>
@@ -48,55 +45,12 @@ namespace Corvinus.WPF.UI.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets ResourceService.
-        /// </summary>
-        public IResourceService ResourceService
-        {
-            get { return GetValue(() => ResourceService); }
-            set { SetValue(() => ResourceService, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets ChangeLocaleCommand.
-        /// </summary>
-        public ICommand ChangeLocaleCommand
-        {
-            get { return GetValue(() => ChangeLocaleCommand); }
-            set { SetValue(() => ChangeLocaleCommand, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets ChangeThemeCommand.
-        /// </summary>
-        public ICommand ChangeThemeCommand
-        {
-            get { return GetValue(() => ChangeThemeCommand); }
-            set { SetValue(() => ChangeThemeCommand, value); }
-        }
-
-        /// <summary>
         /// Gets or sets NavigationTarget.
         /// </summary>
         public Page NavigationTarget
         {
             get { return GetValue(() => NavigationTarget); }
             set { SetValue(() => NavigationTarget, value); }
-        }
-
-        private void OnChangeLocale(string localeCode)
-        {
-            if (localeCode != null && ResourceService.CurrentLocaleCode != localeCode)
-            {
-                ResourceService.ChangeLocale(localeCode);
-            }
-        }
-
-        private void OnChangeTheme(string themeName)
-        {
-            if (themeName != null && ResourceService.CurrentTheme != themeName)
-            {
-                ResourceService.ChangeTheme(themeName);
-            }
         }
     }
 }

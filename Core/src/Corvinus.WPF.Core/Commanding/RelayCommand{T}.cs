@@ -70,9 +70,9 @@ namespace Corvinus.WPF.Core.Commanding
         /// <param name="parameter">object.</param>
         public void Execute(object? parameter)
         {
-            if(execute != null)
+            if (execute != null)
             {
-                if(parameter != null)
+                if (parameter != null)
                 {
                     this.execute((T)parameter);
                 }

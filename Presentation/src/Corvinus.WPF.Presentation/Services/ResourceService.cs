@@ -154,7 +154,7 @@ namespace Corvinus.WPF.Presentation.Services
                 Thread.CurrentThread.CurrentCulture = ci;
                 Thread.CurrentThread.CurrentUICulture = ci;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
         }
