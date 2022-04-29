@@ -1,16 +1,18 @@
 ﻿<Application x:Class="Corvinus.WPF.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Corvinus.WPF.UI"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:Corvinus.WPF.UI">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="\Resources\Localization\en-US\StringResources.xaml" />
                 <ResourceDictionary Source="\Resources\Themes\Default.xaml" />
-                <ResourceDictionary Source="\Resources\Base.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Corvinus.WPF.Presentation;component/Resources/Base.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Corvinus.WPF.Presentation;component/Resources/ControlStyles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Corvinus.WPF.Presentation;component/Resources/ImageGeometry.xaml" />
+                <!-- <ResourceDictionary Source="\Resources\Base.xaml" />
                 <ResourceDictionary Source="\Resources\ControlStyles.xaml" />
-                <ResourceDictionary Source="\Resources\ImageGeometry.xaml" />
+                <ResourceDictionary Source="\Resources\ImageGeometry.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

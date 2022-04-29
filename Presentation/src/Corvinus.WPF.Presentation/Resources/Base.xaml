@@ -3,7 +3,7 @@
                     xmlns:controls="clr-namespace:Corvinus.WPF.Presentation.Controls"
                     xmlns:converters="clr-namespace:Corvinus.WPF.Presentation.Resources.Converters">
     <!-- Converters -->
-    <converters:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <!-- Window Style -->
     <Style x:Key="ControlImageButton" TargetType="{x:Type controls:ImageButton}">
@@ -133,7 +133,7 @@
 
                             <Border Margin="0" x:Name="imageBorder" Padding="2" DockPanel.Dock="Left" VerticalAlignment="Top" Width="25" Height="25">
                                 <Viewbox>
-                                    <Path x:Name="imagePath" Data="{StaticResource Logo}" Stretch="Uniform" Margin="0,0,0,0" Fill="{StaticResource ThemeColorWhite}" />
+                                    <!--<Path x:Name="imagePath" Data="{StaticResource Logo}" Stretch="Uniform" Margin="0,0,0,0" Fill="{StaticResource ThemeColorWhite}" />-->
                                 </Viewbox>
                             </Border>
 
@@ -161,7 +161,7 @@
                                 Width="30"
                                 Height="25"
                                 Margin="0,0,0,0"
-                                Click="{Binding MaximizeCommand}"
+                                Command="{Binding MaximizeCommand}"
                                 Foreground="{DynamicResource ThemeWhite}"
                                 Background="{DynamicResource ThemeColorD}"
                                 Style="{DynamicResource ControlImageButton}"
@@ -174,7 +174,7 @@
                                 Width="30"
                                 Height="25"
                                 Margin="0,0,0,0"
-                                Click="{Binding MinimizeCommand}"
+                                Command="{Binding MinimizeCommand}"
                                 Foreground="{DynamicResource ThemeWhite}"
                                 Background="{DynamicResource ThemeColorD}"
                                 Style="{DynamicResource ControlImageButton}"
@@ -183,11 +183,11 @@
                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                 VerticalAlignment="Top"/>
 
-                            <controls:ImageButton x:Name="ThemeWindow"
+                            <controls:ImageButton x:Name="ShowTheme"
                                 Width="30"
                                 Height="25"
                                 Margin="0,0,0,0"
-                                Click="{Binding ShowThemeCommand}"
+                                Command="{Binding ShowThemeCommand}"
                                 Foreground="{DynamicResource ThemeWhite}"
                                 Background="{DynamicResource ThemeColorD}"
                                 Style="{DynamicResource ControlImageButton}"
@@ -195,7 +195,7 @@
                                 DockPanel.Dock="Right"
                                 WindowChrome.IsHitTestVisibleInChrome="True"
                                 VerticalAlignment="Top"
-                                Visibility="{Binding ThemingEnabled, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                                Visibility="{Binding ThemingEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                         </DockPanel>
                     </Grid>
                 </ControlTemplate>

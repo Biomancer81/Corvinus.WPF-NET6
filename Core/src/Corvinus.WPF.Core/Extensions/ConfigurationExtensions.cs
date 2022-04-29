@@ -4,6 +4,7 @@
 
 namespace Corvinus.WPF.Core.Extensions
 {
+    using Corvinus.WPF.Core.Configuration;
     using Corvinus.WPF.Core.Services;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -25,12 +26,13 @@ namespace Corvinus.WPF.Core.Extensions
         /// <param name="configuration">The current instance of <see cref="IConfiguration" />.</param>
         /// <returns>The current instance of <see cref="IServiceCollection"/> with added configuration.</returns>
         public static IServiceCollection AddAppConfig<T>(this IServiceCollection services, IConfiguration configuration)
+            where T : IApplicationConfiguration
         {
             T appConfig = configuration.GetSection("ApplicationConfiguration").Get<T>();
 
             if (appConfig != null)
             {
-                services.AddSingleton(typeof(T), appConfig);
+                services.AddSingleton<IApplicationConfiguration>(appConfig);
             }
 
             return services;

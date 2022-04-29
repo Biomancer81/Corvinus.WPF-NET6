@@ -29,7 +29,7 @@ namespace Corvinus.WPF.Presentation.Extensions
 
             foreach (Type type in types)
             {
-                if (type.Name.EndsWith("View") && type == typeof(Page))
+                if (type.Name.EndsWith("View"))
                 {
                     navigationService.AddView(type.Name, type);
                 }

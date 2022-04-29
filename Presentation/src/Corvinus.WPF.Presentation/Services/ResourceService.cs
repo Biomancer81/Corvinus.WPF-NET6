@@ -75,17 +75,18 @@ namespace Corvinus.WPF.Presentation.Services
             CurrentTheme = themeName;
 
             Collection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            Collection<ResourceDictionary> newMergedDictionaries = new Collection<ResourceDictionary>();
 
             if (mergedDictionaries.Count > 0)
                 mergedDictionaries.Clear();
 
-            AddThemeDictionary(mergedDictionaries);
+            AddThemeDictionary(newMergedDictionaries);
 
-            AddLocaleDictionaries(mergedDictionaries);
+            AddLocaleDictionaries(newMergedDictionaries);
 
-            AddBaseDictionaries(mergedDictionaries);
+            AddBaseDictionaries(newMergedDictionaries);
 
-            configureAction.Invoke(mergedDictionaries);
+            configureAction.Invoke(newMergedDictionaries);
         }
 
         /// <inheritdoc/>
@@ -104,7 +105,7 @@ namespace Corvinus.WPF.Presentation.Services
         /// <inheritdoc/>
         public Uri GetThemeUri(string themeName)
         {
-            return new Uri(@"\Resources\Themes" + themeName + ".xaml", UriKind.Relative);
+            return new Uri(@"\Resources\Themes\" + themeName + ".xaml", UriKind.Relative);
         }
 
         private void AddBaseDictionaries(Collection<ResourceDictionary> mergedDictionaries)

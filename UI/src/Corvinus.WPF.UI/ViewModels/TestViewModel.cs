@@ -60,17 +60,31 @@ namespace Corvinus.WPF.UI.ViewModels
 
         private void OnChangeLocale(string localeCode)
         {
-            if (localeCode != null && ResourceService.CurrentLocaleCode != localeCode)
+            if (localeCode != null)
             {
-                ResourceService.ChangeLocale(localeCode);
+                if (ResourceService.CurrentLocaleCode != localeCode)
+                {
+                    ResourceService.ChangeLocale(localeCode);
+                }
+                else
+                {
+                    ResourceService.ChangeLocale("en-US");
+                }
             }
         }
 
         private void OnChangeTheme(string themeName)
         {
-            if (themeName != null && ResourceService.CurrentTheme != themeName)
+            if (themeName != null)
             {
-                ResourceService.ChangeTheme(themeName);
+                if (ResourceService.CurrentTheme != themeName)
+                {
+                    ResourceService.ChangeTheme(themeName);
+                }
+                else
+                {
+                    ResourceService.ChangeTheme("Default");
+                }
             }
         }
     }

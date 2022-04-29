@@ -45,12 +45,11 @@ namespace Corvinus.WPF.UI.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets NavigationTarget.
+        /// Gets NavigationTarget.
         /// </summary>
         public Page NavigationTarget
         {
-            get { return GetValue(() => NavigationTarget); }
-            set { SetValue(() => NavigationTarget, value); }
+            get { return _pageNavigationService.CurrentView!; }
         }
     }
 }

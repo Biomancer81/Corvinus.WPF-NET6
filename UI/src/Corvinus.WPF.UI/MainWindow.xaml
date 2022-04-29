@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Corvinus.WPF.UI"
         mc:Ignorable="d"
-        Title="{DynamicResource WindowTitle}" Height="1080" Width="1920" Background="{DynamicResource ThemeBlack}" BorderThickness="0" Padding="0" Style="{StaticResource DefaultWindowStyle}" WindowState="{Binding WindowState, Mode=TwoWay}">
+        Title="{DynamicResource WindowTitle}" Height="1080" Width="1920" Background="{DynamicResource ThemeBlack}" BorderThickness="0" Padding="0" Style="{DynamicResource DefaultWindowStyle}" WindowState="{Binding WindowState, Mode=TwoWay}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="320" />
