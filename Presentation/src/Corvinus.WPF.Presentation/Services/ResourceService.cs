@@ -4,6 +4,7 @@
 
 namespace Corvinus.WPF.Presentation.Services
 {
+    using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -16,11 +17,15 @@ namespace Corvinus.WPF.Presentation.Services
     /// </summary>
     public class ResourceService : IResourceService
     {
+        private readonly ILogger _logger;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceService"/> class.
         /// </summary>
-        public ResourceService()
+        /// <param name="logger">The logger instance for the service.</param>
+        public ResourceService(ILogger<ResourceService> logger)
         {
+            _logger = logger;
         }
 
         /// <inheritdoc/>
@@ -75,7 +80,7 @@ namespace Corvinus.WPF.Presentation.Services
             CurrentTheme = themeName;
 
             Collection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-            Collection<ResourceDictionary> newMergedDictionaries = new Collection<ResourceDictionary>();
+            Collection<ResourceDictionary> newMergedDictionaries = new ();
 
             if (mergedDictionaries.Count > 0)
                 mergedDictionaries.Clear();
@@ -98,7 +103,7 @@ namespace Corvinus.WPF.Presentation.Services
         /// <inheritdoc/>
         public List<string> GetThemes()
         {
-            List<string> result = new List<string>();
+            List<string> result = new();
             return result;
         }
 
@@ -108,7 +113,7 @@ namespace Corvinus.WPF.Presentation.Services
             return new Uri(@"\Resources\Themes\" + themeName + ".xaml", UriKind.Relative);
         }
 
-        private void AddBaseDictionaries(Collection<ResourceDictionary> mergedDictionaries)
+        private static void AddBaseDictionaries(Collection<ResourceDictionary> mergedDictionaries)
         {
             ResourceDictionary baseDictionary = GetExternalDictionary(new Uri(@"pack://application:,,,/Corvinus.WPF.Presentation;component/Resources/Base.xaml", UriKind.Absolute));
             ResourceDictionary? controlStylesDictionary = GetExternalDictionary(new Uri(@"pack://application:,,,/Corvinus.WPF.Presentation;component/Resources/ControlStyles.xaml", UriKind.Absolute));
@@ -124,39 +129,38 @@ namespace Corvinus.WPF.Presentation.Services
                 mergedDictionaries.Add(imageGeometryDictionary);
         }
 
+        private static ResourceDictionary GetExternalDictionary(Uri uri)
+        {
+            ResourceDictionary resourceDictionary = new()
+            {
+                Source = uri
+            };
+            return resourceDictionary;
+        }
+
         private void AddLocaleDictionaries(Collection<ResourceDictionary> mergedDictionaries)
         {
-            ResourceDictionary? localeDictionary = Application.LoadComponent(GetLocaleUri(CurrentLocaleCode, "StringResources")) as ResourceDictionary;
-
-            if (localeDictionary != null)
+            if (Application.LoadComponent(GetLocaleUri(CurrentLocaleCode, "StringResources")) is ResourceDictionary localeDictionary)
                 mergedDictionaries.Add(localeDictionary);
         }
 
         private void AddThemeDictionary(Collection<ResourceDictionary> mergedDictionaries)
         {
-            ResourceDictionary? themeDictionary = Application.LoadComponent(GetThemeUri(CurrentTheme)) as ResourceDictionary;
-            
-            if (themeDictionary != null)
+            if (Application.LoadComponent(GetThemeUri(CurrentTheme)) is ResourceDictionary themeDictionary)
                 mergedDictionaries.Add(themeDictionary);
-        }
-
-        private ResourceDictionary GetExternalDictionary(Uri uri)
-        {
-            ResourceDictionary resourceDictionary = new ResourceDictionary();
-            resourceDictionary.Source = uri;
-            return resourceDictionary;
         }
 
         private void SetCultureInfo()
         {
             try
             {
-                CultureInfo ci = new CultureInfo(CurrentLocaleCode);
+                CultureInfo ci = new(CurrentLocaleCode);
                 Thread.CurrentThread.CurrentCulture = ci;
                 Thread.CurrentThread.CurrentUICulture = ci;
             }
             catch (Exception ex)
             {
+                _logger.LogError($"ResourceService:SetCultureInfo:Failed with exception:{ex.Message}", ex);
             }
         }
     }

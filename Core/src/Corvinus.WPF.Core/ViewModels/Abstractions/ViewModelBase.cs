@@ -17,7 +17,7 @@ namespace Corvinus.WPF.Core.ViewModels
     /// </summary>
     public abstract class ViewModelBase : INotifyPropertyChanged, IDataErrorInfo
     {
-        private readonly Dictionary<string, object?> values = new Dictionary<string, object?>();
+        private readonly Dictionary<string, object?> values = new ();
 
         /// <summary>
         /// Raised when a property on this object has a new value.
@@ -90,7 +90,7 @@ namespace Corvinus.WPF.Core.ViewModels
         /// <param name="value">The property value.</param>
         protected void SetValue<T>(Expression<Func<T>> propertySelector, T value)
         {
-            string propertyName = this.GetPropertyName(propertySelector);
+            string propertyName = GetPropertyName(propertySelector);
 
             this.SetValue<T>(propertyName, value);
         }
@@ -121,7 +121,7 @@ namespace Corvinus.WPF.Core.ViewModels
         /// <returns>The value of the property or default value if not exist.</returns>
         protected T GetValue<T>(Expression<Func<T>> propertySelector)
         {
-            string propertyName = this.GetPropertyName(propertySelector);
+            string propertyName = GetPropertyName(propertySelector);
 
             return this.GetValue<T>(propertyName);
         }
@@ -177,7 +177,7 @@ namespace Corvinus.WPF.Core.ViewModels
             if (!result)
             {
                 var validationResult = results.First();
-                error = validationResult.ErrorMessage != null ? validationResult.ErrorMessage : string.Empty;
+                error = validationResult.ErrorMessage ?? string.Empty;
             }
 
             return error;
@@ -209,7 +209,7 @@ namespace Corvinus.WPF.Core.ViewModels
             var propertyChanged = this.PropertyChanged;
             if (propertyChanged != null)
             {
-                string propertyName = this.GetPropertyName(propertySelector);
+                string propertyName = GetPropertyName(propertySelector);
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
@@ -220,9 +220,9 @@ namespace Corvinus.WPF.Core.ViewModels
         /// <param name="expression">The expression.</param>
         /// <returns>String.</returns>
         /// <exception cref="System.InvalidOperationException">InvalidOperationException.</exception>
-        private string GetPropertyName(LambdaExpression expression)
+        private static string GetPropertyName(LambdaExpression expression)
         {
-            if (!(expression.Body is MemberExpression memberExpression))
+            if (expression.Body is not MemberExpression memberExpression)
             {
                 throw new InvalidOperationException();
             }
@@ -240,12 +240,7 @@ namespace Corvinus.WPF.Core.ViewModels
         {
             if (!this.values.TryGetValue(propertyName, out object? value))
             {
-                var propertyDescriptor = TypeDescriptor.GetProperties(this.GetType()).Find(propertyName, false);
-                if (propertyDescriptor == null)
-                {
-                    throw new ArgumentException("Invalid property name", propertyName);
-                }
-
+                var propertyDescriptor = TypeDescriptor.GetProperties(this.GetType()).Find(propertyName, false) ?? throw new ArgumentException("Invalid property name", propertyName);
                 value = propertyDescriptor.GetValue(this);
                 this.values.Add(propertyName, value);
             }

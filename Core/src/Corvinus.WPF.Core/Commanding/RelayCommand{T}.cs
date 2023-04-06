@@ -54,9 +54,9 @@ namespace Corvinus.WPF.Core.Commanding
         [DebuggerStepThrough]
         public bool CanExecute(object? parameter)
         {
-            if(parameter != null)
+            if (parameter != null)
             {
-                return this.canExecute == null ? true : this.canExecute((T)parameter);
+                return canExecute == null || canExecute((T)parameter);
             }
             else
             {
@@ -74,11 +74,11 @@ namespace Corvinus.WPF.Core.Commanding
             {
                 if (parameter != null)
                 {
-                    this.execute((T)parameter);
+                    execute((T)parameter);
                 }
                 else
                 {
-                    this.Execute(default(T)!);
+                    Execute(default(T) !);
                 }
             }
         }

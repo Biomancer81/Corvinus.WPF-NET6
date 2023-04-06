@@ -24,7 +24,5 @@ namespace Corvinus.WPF.UI.Configuration
 
         /// <inheritdoc/>
         public bool ThemingEnabled { get; set; }
-
-
     }
 }

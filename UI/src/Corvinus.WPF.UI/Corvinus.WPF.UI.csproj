@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Corvinus.WPF.UI</AssemblyName>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
@@ -19,6 +20,10 @@
   <ItemGroup>
     <Compile Remove="Services\Abstractions\IResourceService.cs" />
     <Compile Remove="Services\ResourceService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Services\DbContext.cs~RF5ced8d00.TMP" />
   </ItemGroup>
 
   <ItemGroup>

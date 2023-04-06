@@ -4,26 +4,15 @@
 
 namespace Corvinus.WPF.UI.Views
 {
+    using Corvinus.WPF.Modules.UI;
     using Corvinus.WPF.UI.ViewModels;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Navigation;
-    using System.Windows.Shapes;
 
     /// <summary>
     /// Interaction logic for TestView.xaml.
     /// </summary>
-    public partial class TestView : Page
+    public partial class TestView : Page, IModuleView
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TestView"/> class.
@@ -33,6 +22,18 @@ namespace Corvinus.WPF.UI.Views
         {
             InitializeComponent();
             this.DataContext = viewModel;
+            ModuleDescription = "Test Page Module";
+            ModuleId = Guid.NewGuid();
+            ModuleName = "TestPageModule";
         }
+
+        /// <inheritdoc/>
+        public string ModuleDescription { get; set; }
+
+        /// <inheritdoc/>
+        public Guid ModuleId { get; set; }
+
+        /// <inheritdoc/>
+        public string ModuleName { get; set; }
     }
 }

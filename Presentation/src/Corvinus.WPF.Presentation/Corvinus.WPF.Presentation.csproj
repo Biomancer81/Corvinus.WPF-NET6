@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Corvinus.WPF.Presentation</AssemblyName>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\src\Corvinus.WPF.Core\Corvinus.WPF.Core.csproj" />
+    <ProjectReference Include="..\..\..\Modules\src\Corvinus.WPF.Modules.UI\Corvinus.WPF.Modules.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

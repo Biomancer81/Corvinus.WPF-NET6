@@ -14,7 +14,9 @@ namespace Corvinus.WPF.UI.Services
         /// <summary>
         /// Initializes a new instance of the <see cref="DbContext"/> class.
         /// </summary>
-        public DbContext() { }
+        public DbContext()
+        {
+        }
 
         /// <inheritdoc/>
         public List<string> GetDataSample()

@@ -1,21 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>Corvinus.WPF.Modules</AssemblyName>
+    <AssemblyName>Corvinus.WPF.Core.Abstractions</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <OutputPath>$(SolutionDir)build\bin\$(AssemblyName)\$(Configuration)\$(Platform)</OutputPath>
     <DocumentationFile>$(SolutionDir)build\docs\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>    
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Abstractions\IModuleService.cs~RF5cc079f0.TMP" />
-    <None Remove="Abstractions\IModuleService.cs~RF5cc0f828.TMP" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
   </ItemGroup>
 
 </Project>

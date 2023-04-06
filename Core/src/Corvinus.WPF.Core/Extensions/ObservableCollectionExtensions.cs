@@ -21,10 +21,7 @@ namespace Corvinus.WPF.Core.Extensions
         /// <param name="items">IEnumerable.</param>
         public static void RefreshWith<T>(this ObservableCollection<T> collection, IEnumerable<T> items)
         {
-            if (collection == null)
-            {
-                collection = new ObservableCollection<T>();
-            }
+            collection ??= new ObservableCollection<T>();
 
             if (collection.Count > 0)
             {

@@ -4,13 +4,14 @@
 
 namespace Corvinus.WPF.Presentation.Extensions
 {
+    using Corvinus.WPF.Modules.Extensions;
+    using Corvinus.WPF.Modules.UI;
     using Corvinus.WPF.Presentation.Services;
     using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Windows.Controls;
 
     /// <summary>
     /// Extensions used for App Configuration.
@@ -21,11 +22,12 @@ namespace Corvinus.WPF.Presentation.Extensions
         /// Adds Views.
         /// </summary>
         /// <param name="services">The current instance of <see cref="IServiceCollection"/>.</param>
+        /// <param name="modulePath">Optional string pointing to path for view module libraries.</param>
         /// <returns>The configured instance of <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddViews(this IServiceCollection services)
+        public static IServiceCollection AddViews(this IServiceCollection services, string modulePath = "")
         {
-            List<Type> types = Assembly.GetCallingAssembly().GetTypes().Where(t => t.Name.EndsWith("View") || t.Name.EndsWith("Window")).ToList();
-            PageNavigationService navigationService = new PageNavigationService();
+            List<Type> types = Assembly.GetCallingAssembly().GetTypes().Where(x => x.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IModuleView))).ToList();
+            PageNavigationService navigationService = new ();
 
             foreach (Type type in types)
             {
@@ -35,6 +37,11 @@ namespace Corvinus.WPF.Presentation.Extensions
                 }
 
                 services.AddSingleton(type);
+            }
+
+            if (!string.IsNullOrEmpty(modulePath))
+            {
+                services.AddModuleViews(AppContext.BaseDirectory + modulePath, navigationService);
             }
 
             services.AddSingleton<PageNavigationService>(navigationService);

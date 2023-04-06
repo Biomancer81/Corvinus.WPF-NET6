@@ -133,7 +133,7 @@ namespace Corvinus.WPF.Core.Services
                 ForwardJournal.Clear();
             }
 
-            CurrentView = (T?)Host!.Services.GetService(type) != null ? (T?)Host!.Services.GetService(type) : null;
+            CurrentView = (T?)Host!.Services.GetService(type) ?? null;
 
             return;
         }

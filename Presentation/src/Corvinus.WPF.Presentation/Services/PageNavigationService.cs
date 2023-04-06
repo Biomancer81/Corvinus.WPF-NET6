@@ -4,11 +4,10 @@
 
 namespace Corvinus.WPF.Presentation.Services
 {
+    using Corvinus.WPF.Core.Services;
     using System;
     using System.Collections.Generic;
     using System.Windows.Controls;
-    using Corvinus.WPF.Core.Services;
-    using Microsoft.Extensions.Hosting;
 
     /// <summary>
     /// A class used for page navigation.

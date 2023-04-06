@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Corvinus.WPF.Modules.UI</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <OutputPath>$(SolutionDir)build\bin\$(AssemblyName)\$(Configuration)\$(Platform)</OutputPath>
@@ -13,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\src\Corvinus.WPF.Core.Abstractions\Corvinus.WPF.Core.Abstractions.csproj" />
     <ProjectReference Include="..\Corvinus.WPF.Modules\Corvinus.WPF.Modules.csproj" />
   </ItemGroup>
 

@@ -4,8 +4,8 @@
 
 namespace Corvinus.WPF.UI
 {
-    using Corvinus.WPF.Core.Configuration;
     using Corvinus.WPF.Core.Extensions;
+    using Corvinus.WPF.Modules.Extensions;
     using Corvinus.WPF.Presentation.Extensions;
     using Corvinus.WPF.Presentation.Services;
     using Corvinus.WPF.UI.Configuration;
@@ -14,6 +14,7 @@ namespace Corvinus.WPF.UI
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Interaction logic for App.xaml.
